@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <!-- Email Template for Change Request Submitted -->
+        <record id="email_template_employee_change_submitted" model="mail.template">
+            <field name="name">Employee Change Request Submitted</field>
+            <field name="email_from">${object.user_id.email}</field>
+            <field name="subject">Change Request Submitted for ${object.name}</field>
+            <field name="model_id" ref="model_hr_employee_change"/>
+            <field name="body_html">
+                <![CDATA[
+                <p>Hello ${object.user_id.name},</p>
+                <p>Your change request has been submitted and is awaiting approval.</p>
+                <p>Details:</p>
+                <ul>
+                    <li>Job Title: ${object.job_title}</li>
+                    <li>Work Phone: ${object.work_phone}</li>
+                    <li>Work Email: ${object.work_email}</li>
+                    <li>Reason: ${object.reason}</li>
+                </ul>
+                <p>Thank you!</p>
+                ]]>
+            </field>
+        </record>
+        <!-- Add other email templates similarly -->
+    </data>
+</odoo>

@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+
+        <record id="action_property_view_offers" model="ir.actions.act_window">
+            <field name="name">Property</field>
+            <field name="res_model">estate.property.offer</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('property_id', '=', active_id)]</field>
+        </record>
+
+         <record id="view_form_estate_property" model="ir.ui.view">
+            <field name="name">estate.property.form</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <form string="Property">
+                    <header>
+                        <button name="action_accept" type="object" string="Sold" class="btn btn-primary"/>
+                        <button name="action_refused" type="object" string="Cancel" class="btn btn-danger"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!-- <button class="oe_stat_button" name="%(real_estate_ads.action_property_view_offers)d" type="action">
+                                <field name="offer_count" string="Offer" widget="statinfo"/>
+                            </button> -->
+
+                            <button class="oe_stat_button" name="action_property_view_offers" type="object" icon="fa-handshake-o">
+                                <field name="offer_count" string="Offer" widget="statinfo"/>
+                            </button>
+                        </div>
+
+                        <group>
+                            <field name="name"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field' : 'color'}"/>
+                            <group>
+                                <field name="type_id"/>
+                                <field name="postcode"/>
+                                <field name="date_availability"/>
+                            </group>
+                            <group>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                                <field name="best_offer"/>
+                            </group>
+                            <notebook>
+                                <page string="Description">
+                                    <group>
+                                        <field name="description"/>
+                                        <field name="beadrooms"/>
+                                        <field name="living_area"/>
+                                        <field name="facades"/>
+                                        <field name="garage"/>
+                                        <field name="garden"/>
+                                        <field name="garden_area"/>
+                                        <field name="garden_orientation"/>
+                                        <field name="total_area"/>
+                                    </group>
+                                </page>
+
+                                <page string="Offers">
+                                    <field name="offer_ids">
+                                        <tree editable="bottom" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'"> 
+                                            <field name="price"/>
+                                            <field name="partner_id"/>
+                                            <field name="creation_date"/>
+                                            <field name="validity"/>
+                                            <field name="deadline"/>
+                                            <field name="status" readonly="1"/>
+                                            <button name="action_accept_offer" type="object" icon="fa-check" string="Accept"/>
+                                            <button name="action_decline_offer" type="object" icon="fa-times" string="Decline"/>
+                                        </tree>
+                                    </field>
+                                </page>
+
+                                <page string="Other Info">
+                                    <group>
+                                        <field name="sales_id"/>
+                                        <field name="buyer_id"/>
+                                        <field name="phone"/>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="view_tree_estate_property" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Property">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="date_availability"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="best_offer"/>
+            </tree>
+        </field>
+    </record>
+
+        <record id="action_property" model="ir.actions.act_window">
+            <field name="name">Property</field>
+            <field name="res_model">estate.property</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="estate_property_tree_view"/> -->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Property to Advertise
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
