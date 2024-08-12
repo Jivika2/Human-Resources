@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <!-- Email Template for Employee Change Request Submission -->
         <record id="email_template_employee_change_submitted" model="mail.template">
             <field name="name">Employee Change Request Submitted</field>
             <field name="subject">Employee Change Request Submitted</field>
@@ -14,7 +13,7 @@
             ]]></field>
         </record>
 
-        <!-- Email Template for Admin Notification -->
+       
         <record id="email_template_admin_notification" model="mail.template">
             <field name="name">Admin Notification for Employee Change Request</field>
             <field name="subject">New Employee Change Request</field>
@@ -33,7 +32,8 @@
             ]]></field>
         </record>
 
-        <!-- Email Template for Change Request Approved -->
+        
+        
         <record id="email_template_change_request_approved" model="mail.template">
             <field name="name">Change Request Approved</field>
             <field name="subject">Your Change Request Has Been Approved</field>
@@ -46,7 +46,7 @@
             ]]></field>
         </record>
 
-        <!-- Email Template for Change Request Rejected -->
+
         <record id="email_template_change_request_rejected" model="mail.template">
             <field name="name">Change Request Rejected</field>
             <field name="subject">Your Change Request Has Been Rejected</field>
