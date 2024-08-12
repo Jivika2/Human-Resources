@@ -1,18 +1,17 @@
 <odoo>
     <data>
-        <!-- Form View Inheritance -->
+     
         <record id="view_employee_form_inherit" model="ir.ui.view">
             <field name="name">hr.employee.form.inherit</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-                <!-- Corrected xpath for adding fields to the 'Location' group -->
+  
                 <!-- <xpath expr="//page[@name='public']//group[contains(@class, 'o_group_location')]" position="inside">
                     <field name="work_location"/>
                     <field name="assigned_projects"/>
                 </xpath> -->
 
-                <!-- Add a new notebook page for Change Requests -->
                 <xpath expr="//notebook" position="inside">
                     <page name="change_requests" string="Change Requests">
                         <group>
@@ -44,7 +43,6 @@
             </field>
         </record>
 
-        <!-- Tree View Inheritance -->
         <record id="view_employee_tree_inherit" model="ir.ui.view">
             <field name="name">hr.employee.tree.inherit</field>
             <field name="model">hr.employee</field>
