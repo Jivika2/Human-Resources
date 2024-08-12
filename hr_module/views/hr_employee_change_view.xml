@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <!-- Tree View for Change Requests -->
+
         <record id="view_employee_change_tree" model="ir.ui.view">
             <field name="name">hr.employee.change.tree</field>
             <field name="model">hr.employee.change</field>
@@ -17,7 +17,6 @@
             </field>
         </record>
 
-        <!-- Form View for Change Requests -->
         <record id="view_employee_change_form" model="ir.ui.view">
             <field name="name">hr.employee.change.form</field>
             <field name="model">hr.employee.change</field>
