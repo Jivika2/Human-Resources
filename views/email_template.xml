@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="email_template_employee_change_submitted" model="mail.template">
+            <field name="name">Employee Change Request Submitted</field>
+            <field name="subject">Employee Change Request Submitted</field>
+            <field name="email_from">${(user.email or '')|safe}</field>
+            <field name="email_to">${object.employee_id.work_email or ''}</field>
+            <field name="body_html"><![CDATA[
+                <p>Hello ${object.employee_id.name},</p>
+                <p>Your change request has been submitted and is awaiting approval.</p>
+                <p>Thank you.</p>
+            ]]></field>
+        </record>
+
+       
+        <record id="email_template_admin_notification" model="mail.template">
+            <field name="name">Admin Notification for Employee Change Request</field>
+            <field name="subject">New Employee Change Request</field>
+            <field name="email_from">${(user.email or '')|safe}</field>
+            <field name="email_to">${object.approver_ids.mapped('login') or ''}</field>
+            <field name="body_html"><![CDATA[
+                <p>Hello Admin,</p>
+                <p>An employee change request has been submitted by ${object.employee_id.name}.</p>
+                <p>Request details:</p>
+                <ul>
+                    <li>Job Title: ${object.job_title}</li>
+                    <li>Work Phone: ${object.work_phone}</li>
+                    <li>Work Email: ${object.work_email}</li>
+                </ul>
+                <p>Please review and approve the request.</p>
+            ]]></field>
+        </record>
+
+        
+        
+        <record id="email_template_change_request_approved" model="mail.template">
+            <field name="name">Change Request Approved</field>
+            <field name="subject">Your Change Request Has Been Approved</field>
+            <field name="email_from">${(user.email or '')|safe}</field>
+            <field name="email_to">${object.employee_id.work_email or ''}</field>
+            <field name="body_html"><![CDATA[
+                <p>Hello ${object.employee_id.name},</p>
+                <p>Your change request has been approved and the changes have been applied to your profile.</p>
+                <p>Thank you.</p>
+            ]]></field>
+        </record>
+
+
+        <record id="email_template_change_request_rejected" model="mail.template">
+            <field name="name">Change Request Rejected</field>
+            <field name="subject">Your Change Request Has Been Rejected</field>
+            <field name="email_from">${(user.email or '')|safe}</field>
+            <field name="email_to">${object.employee_id.work_email or ''}</field>
+            <field name="body_html"><![CDATA[
+                <p>Hello ${object.employee_id.name},</p>
+                <p>Your change request has been rejected. Please contact HR for further details.</p>
+                <p>Thank you.</p>
+            ]]></field>
+        </record>
+    </data>
+</odoo>
