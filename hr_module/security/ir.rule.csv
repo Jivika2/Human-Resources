@@ -1,3 +1,0 @@
-id,name,model_id:id,domain_force,groups_id:id
-rule_hr_employee_change_requests,rule.hr.employee.change.requests,model_hr_employee_change,[],base.group_hr_user
-rule_hr_employee_own_records,rule.hr.employee.own.records,model_hr_employee,[(user_id,'=',uid)],base.group_user
